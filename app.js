@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 
 //module form file 
 const userRouter = require('./api/routes/user.route');
+const eventRouter = require('./api/routes/event.route');
 
 //connection to database
 mongoose.connect('mongodb+srv://indraa:'+ process.env.MONGO_ATLAS_PW +'@node-rest-shop-dtcc7.mongodb.net/acara-seru-api?retryWrites=true&w=majority',
@@ -26,11 +27,7 @@ app.use(bodyParser.json());
 //rout user
 app.use('/user',userRouter);
 //rout event
-app.use('/event',(req, res, next)=>{
-    res.status(200).json({
-        message: 'event'
-    });
-});
+app.use('/event',eventRouter);
 //rout partisipan
 app.use('/partisipan',(req, res, next)=>{
     res.status(200).json({

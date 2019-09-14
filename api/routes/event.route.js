@@ -2,12 +2,12 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 
-const User = require('../models/user.model');
+const Event = require('../models/event.model');
 
 
 //mengambil semua data
 router.get('/', (req ,res, next)=>{
-    User
+    Event
         .find()
         .then(result=>{
             const jumlah = result.length;
@@ -23,14 +23,14 @@ router.get('/', (req ,res, next)=>{
         });
 });
 //mengambil data dengan ID
-router.get('/:userId', (req ,res, next)=>{
-    const id = req.params.userId;
-    User
+router.get('/:eventId', (req ,res, next)=>{
+    const id = req.params.eventId;
+    Event
         .findById(id)
         .then(result=>{
             if (result) {
                 res.status(200).json({
-                    user: result
+                    event: result
                 })
             }else{
                 res.status(404).json({
@@ -46,17 +46,14 @@ router.get('/:userId', (req ,res, next)=>{
 });
 //masukan data atau input data
 router.post('/', (req ,res, next)=>{
-    const user = new User({
+    const event = new Event({
         _id: new mongoose.Types.ObjectId,
-        fullName: req.body.fullName,
-        email: req.body.email,
-        institution: req.body.institution,
         title: req.body.title,
-        phoneNumber: req.body.phoneNumber,
-        password: req.body.password,
-        confirmPassword: req.body.confirmPassword
+        description: req.body.description,
+        date: new Date(),
+        location: req.body.location,
     });
-    user
+    event
         .save()
         .then(result =>{
             console.log(result);
@@ -74,19 +71,16 @@ router.post('/', (req ,res, next)=>{
         });
 });
 //edit data 
-router.patch('/:userId', (req ,res, next)=>{
-    const id = req.params.userId;
-    User
+router.patch('/:eventId', (req ,res, next)=>{
+    const id = req.params.eventId;
+    Event
         .updateOne({
             _id: id
         }, {
-            fullName: req.body.fullName,
-            email: req.body.email,
-            institution: req.body.institution,
             title: req.body.title,
-            phoneNumber: req.body.phoneNumber,
-            password: req.body.password,
-            confirmPassword: req.body.confirmPassword
+            description: req.body.description,
+            date: new Date(),
+            location: req.body.location,
         })
         .then(result => {
             console.log(result);
@@ -101,9 +95,9 @@ router.patch('/:userId', (req ,res, next)=>{
         });
 });
 //delete data
-router.delete('/:userId', (req ,res, next)=>{
-    const id = req.params.userId;
-    User
+router.delete('/:eventId', (req ,res, next)=>{
+    const id = req.params.eventId;
+    Event
         .remove({_id: id})
         .then(result=>{
             res.status(200).json({
