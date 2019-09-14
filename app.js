@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 const userRouter = require('./api/routes/user.route');
 
 //connection to database
-mongoose.connect('mongodb+srv://indraa:'+ process.env.MONGO_ATLAS_PW +'@node-rest-shop-dtcc7.mongodb.net/test?retryWrites=true&w=majority',
+mongoose.connect('mongodb+srv://indraa:'+ process.env.MONGO_ATLAS_PW +'@node-rest-shop-dtcc7.mongodb.net/acara-seru-api?retryWrites=true&w=majority',
 {
     useNewUrlParser: true,
     useUnifiedTopology: true
