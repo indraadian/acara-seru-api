@@ -1,0 +1,27 @@
+{
+  "name": "acara-seru-api",
+  "version": "1.0.0",
+  "description": "api for acara seru aplication",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Orthodock/acara-seru-api.git"
+  },
+  "author": "indra adiansyahroni",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Orthodock/acara-seru-api/issues"
+  },
+  "homepage": "https://github.com/Orthodock/acara-seru-api#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.7.1",
+    "morgan": "^1.9.1",
+    "nodemon": "^1.19.2"
+  }
+}
