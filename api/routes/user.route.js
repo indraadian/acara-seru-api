@@ -54,7 +54,8 @@ router.post('/', (req ,res, next)=>{
         title: req.body.title,
         phoneNumber: req.body.phoneNumber,
         password: req.body.password,
-        confirmPassword: req.body.confirmPassword
+        confirmPassword: req.body.confirmPassword,
+        levelUser: req.body.levelUser
     });
     user
         .save()
@@ -86,7 +87,8 @@ router.patch('/:userId', (req ,res, next)=>{
             title: req.body.title,
             phoneNumber: req.body.phoneNumber,
             password: req.body.password,
-            confirmPassword: req.body.confirmPassword
+            confirmPassword: req.body.confirmPassword,
+            levelUser: req.body.levelUser
         })
         .then(result => {
             console.log(result);
