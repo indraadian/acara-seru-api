@@ -46,6 +46,6 @@ app.use('/organizer',(req, res, next)=>{
         message: 'organizer'
     });
 });
-//end of midleware route
 
+//end of midleware route
 module.exports = app;
